@@ -10,7 +10,7 @@ public class Group {
         return name;
     }
 
-    public String setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

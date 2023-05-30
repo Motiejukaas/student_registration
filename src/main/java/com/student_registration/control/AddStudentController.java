@@ -1,5 +1,8 @@
 package com.student_registration.control;
 
+import com.student_registration.data.Group;
+import com.student_registration.data.Groups;
+import com.student_registration.data.Student;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,8 @@ public class AddStudentController implements Initializable {
     @FXML
     private Button submit_button;
 
+    private Groups groups1;
+
     @FXML
     private void submitData(ActionEvent event) {
         String groupName = group_choice_box.getValue();
@@ -30,6 +35,10 @@ public class AddStudentController implements Initializable {
         // Validate the input data
 
         // Store and send the student data
+        Student student = new Student(name_text_field.getText(), surname_text_field.getText(), student_id_text_field.getText());
+        Group group = (Group) groups1.findGroupByName(group_choice_box.getValue());
+        group.addStudent(student);
+
 
         // Close the add student window
         Stage stage = (Stage) submit_button.getScene().getWindow();
