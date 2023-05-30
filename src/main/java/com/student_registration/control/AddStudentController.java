@@ -1,12 +1,18 @@
 package com.student_registration.control;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class AddStudentController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AddStudentController implements Initializable {
     @FXML
     private ChoiceBox<String> group_choice_box;
     @FXML
@@ -15,6 +21,25 @@ public class AddStudentController {
     private Button submit_button;
 
     @FXML
-    private void submitData(ActionEvent actionEvent) {
+    private void submitData(ActionEvent event) {
+        String groupName = group_choice_box.getValue();
+        String name = name_text_field.getText();
+        String surname = surname_text_field.getText();
+        String studentId = student_id_text_field.getText();
+
+        // Validate the input data
+
+        // Store and send the student data
+
+        // Close the add student window
+        Stage stage = (Stage) submit_button.getScene().getWindow();
+        stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        //group_choice_box.setItems(/* cia idet lista grupiu*/);
+        group_choice_box.getSelectionModel().selectFirst();
     }
 }
