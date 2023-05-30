@@ -69,12 +69,32 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void editStudent(ActionEvent event) {
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/student_registration/edit_student_view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Edit Student");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        edit_student.setDisable(false);
     }
 
     @FXML
     private void exportData(ActionEvent event) {
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/student_registration/export_view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Export Data");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        edit_student.setDisable(false);
     }
 
     @FXML

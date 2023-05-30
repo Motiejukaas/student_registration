@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student_registration.control.ExportController">
-    <children>
-        <ChoiceBox fx:id="file_type_choice_box" prefWidth="200.0">
+<VBox prefHeight="120.0" prefWidth="244.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.student_registration.control.ExportController">
+    <AnchorPane prefHeight="200.0" prefWidth="237.0">
+        <ChoiceBox fx:id="file_type_choice_box" layoutX="22.0" layoutY="20.0" prefWidth="200.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Excel" />
-                    <String fx:value="CSV" />
-                    <String fx:value="PDF" />
+                    <String fx:value="Excel"/>
+                    <String fx:value="CSV"/>
+                    <String fx:value="PDF"/>
                 </FXCollections>
             </items>
         </ChoiceBox>
-        <Button fx:id="export_button" onAction="#exportData" text="Export" />
-    </children>
+        <Button fx:id="export_button" layoutX="92.0" layoutY="70.0" onAction="#exportData" text="Export">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+    </AnchorPane>
 </VBox>
