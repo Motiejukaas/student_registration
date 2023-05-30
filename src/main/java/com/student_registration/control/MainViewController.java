@@ -3,7 +3,10 @@ package com.student_registration.control;
 import com.student_registration.data.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -13,6 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,12 +39,23 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void addGroup(ActionEvent event) {
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/student_registration/add_group_view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Add Group");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        add_student.setDisable(false);
     }
 
     @FXML
     private void addStudent(ActionEvent event) {
 
+        edit_student.setDisable(false);
     }
 
     @FXML
@@ -66,7 +81,7 @@ public class MainViewController implements Initializable {
             if (fileExtension.equals("csv")) {
                 // Handle CSV file parsing
                 parseCSVFile(selectedFile);
-            } else if (fileExtension.equals("xlsx")) {
+            } else if (fileExtension.equals("xlsx") || fileExtension.equals("xls")) {
                 // Handle Excel file parsing
                 parseExcelFile(selectedFile);
             } else {
