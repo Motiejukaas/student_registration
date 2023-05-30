@@ -1,2 +1,5 @@
-package com.student_registration.data;public class Student {
+package com.student_registration.data;
+
+public class Student extends Human{
+
 }
