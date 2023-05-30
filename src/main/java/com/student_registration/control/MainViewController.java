@@ -54,7 +54,16 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void addStudent(ActionEvent event) {
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/student_registration/add_student_view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Add Student");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         edit_student.setDisable(false);
     }
 
