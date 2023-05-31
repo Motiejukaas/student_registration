@@ -1,6 +1,6 @@
 package com.student_registration.data;
 
-public class Student extends Human{
+public class Student extends Human {
 
     private String studentId;
 
@@ -9,8 +9,12 @@ public class Student extends Human{
         this.studentId = studentId;
     }
 
-    public String getStudentId() {return studentId;}
+    public String getStudentId() {
+        return studentId;
+    }
 
-    public void setStudentId(String studentId) {this.studentId = studentId;}
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 
 }

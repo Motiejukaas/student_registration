@@ -7,19 +7,40 @@ public class Groups {
 
     private List<Group> groups;
 
-    public Groups() {this.groups = new ArrayList<>();}
+    private static volatile Groups instance = null;
 
-    public void addGroup(Group group) {this.groups.add(group);}
+    private Groups() {
+        this.groups = new ArrayList<>();
+    }
 
-    public List<Group> getGroups() {return groups;}
-
-    public List<Group> findGroupByName(String name) {
-        List<Group> foundGroups = new ArrayList<>();
-        for (Group group : groups) {
-            if (group.getName().equals(name)) {
-                foundGroups.add(group);
+    //singleton method
+    public static Groups getInstance() {
+        if (instance == null) {
+            synchronized (Groups.class) {
+                if (instance == null) {
+                    instance = new Groups();
+                }
             }
         }
-        return foundGroups;
+        return instance;
     }
+
+    public void addGroup(Group group) {
+        this.groups.add(group);
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public Group findGroupByName(String name) {
+        Group found_group = null;
+        for (Group group : groups) {
+            if (group.getName().equals(name)) {
+                found_group = group;
+            }
+        }
+        return found_group;
+    }
+
 }

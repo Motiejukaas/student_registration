@@ -1,10 +1,20 @@
 package com.student_registration.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
     private String name;
     private List<Student> students;
+
+    public Group() {
+        students = new ArrayList<>();
+    }
+
+    public Group(String name) {
+        this();
+        this.name = name;
+    }
 
     public String getName() {
         return name;
