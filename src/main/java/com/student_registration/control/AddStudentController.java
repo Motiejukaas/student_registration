@@ -3,7 +3,6 @@ package com.student_registration.control;
 import com.student_registration.data.Group;
 import com.student_registration.data.Groups;
 import com.student_registration.data.Student;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,8 +22,6 @@ public class AddStudentController implements Initializable {
     @FXML
     private Button submit_button;
 
-    private Groups groups1;
-
     @FXML
     private void submitData(ActionEvent event) {
         String groupName = group_choice_box.getValue();
@@ -32,15 +29,9 @@ public class AddStudentController implements Initializable {
         String surname = surname_text_field.getText();
         String studentId = student_id_text_field.getText();
 
-        // Validate the input data
-
-        // Store and send the student data
         Student student = new Student(name_text_field.getText(), surname_text_field.getText(), student_id_text_field.getText());
-        Group group = (Group) groups1.findGroupByName(group_choice_box.getValue());
-        group.addStudent(student);
+        Groups.getInstance().findGroupByName(groupName).addStudent(student);
 
-
-        // Close the add student window
         Stage stage = (Stage) submit_button.getScene().getWindow();
         stage.close();
     }
@@ -48,7 +39,11 @@ public class AddStudentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //group_choice_box.setItems(/* cia idet lista grupiu*/);
+        if (Groups.getInstance() != null && !Groups.getInstance().getGroups().isEmpty()) {
+            group_choice_box.getItems().addAll(Groups.getInstance().getGroups().stream().map(Group::getName).toArray(String[]::new));
+        } else {
+            group_choice_box.setValue("No groups exist");
+        }
         group_choice_box.getSelectionModel().selectFirst();
     }
 }
